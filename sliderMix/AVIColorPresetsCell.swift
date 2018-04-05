@@ -20,7 +20,7 @@ class AVIColorPresetCell: UICollectionViewCell {
         layer.masksToBounds = true
         
         nameLabel.textColor = UIColor.white
-        nameLabel.font = FontBook.Bold.of(size: 11)
+        nameLabel.font = FontBook.Bold.of(size: 11) // TODO: multipler for iPad
         nameLabel.addShadow()
     }
     

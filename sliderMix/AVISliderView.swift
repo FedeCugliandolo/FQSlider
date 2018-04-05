@@ -78,7 +78,10 @@ class AVISliderView: UIView, UITextFieldDelegate {
     
     func didSliderChange(_ value: Float) {
         valueTextField.text = String(Int(value)) + " " + unit
+        shadowOnValueText ? valueTextField.addShadow() : ()
     }
+    
+    var shadowOnValueText = false
     
     func setSliderValue(_ value: Float) {
         slider.setValue(value, animated: true)
@@ -177,6 +180,18 @@ enum FontBook: String {
 extension String {
     var numbers: String {
         return String(describing: filter { String($0).rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789")) != nil })
+    }
+}
+
+extension UITextField {
+    func addShadow() {
+        let myShadow = NSShadow()
+        myShadow.shadowBlurRadius = 1
+        myShadow.shadowOffset = CGSize(width: 1, height: 1)
+        myShadow.shadowColor = UIColor.darkGray
+        let myAttribute = [NSAttributedStringKey.shadow: myShadow]
+        let myAttrString = NSAttributedString(string: self.text!, attributes: myAttribute)
+        self.attributedText = myAttrString
     }
 }
 
