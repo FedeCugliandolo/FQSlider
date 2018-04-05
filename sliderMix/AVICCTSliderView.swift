@@ -17,6 +17,6 @@ class AVICCTSliderView: AVISliderView {
         let cctColor3 = #colorLiteral(red: 0.7137254902, green: 0.8980392157, blue: 1, alpha: 1)
         slider.colors = [cctColor1.cgColor, cctColor2.cgColor, cctColor3.cgColor]
         slider.hasGradient = true
-        thumbTitle = "CCT"
+        thumbTitle = "CCT".localizedUppercase
     }
 }

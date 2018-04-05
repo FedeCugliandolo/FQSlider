@@ -67,7 +67,7 @@ class AVISlider: UISlider {
         }
     }
     
-    func prepare(minColor: UIColor, maxColor: UIColor, gradient: Bool = false, minValue: Float = 0, maxValue: Float = 1) {
+    func prepare(minColor: UIColor, maxColor: UIColor, gradient: Bool = false, minValue: Float = 0, maxValue: Float = 100) {
         colors = [minColor.cgColor, maxColor.cgColor]
         hasGradient = gradient
         minimumValue = minValue

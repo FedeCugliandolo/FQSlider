@@ -9,6 +9,16 @@
 import Foundation
 import UIKit
 
+class ValueTextField: UITextField, UITextFieldDelegate
+{
+    var value = ""
+    var unit = "%"
+    
+    func setValue(_ value: String, unit: String) {
+        self.text = value + " " + unit
+    }
+}
+
 @IBDesignable
 class AVISliderView: UIView, UITextFieldDelegate {
     @IBOutlet var mainView: UIView!
@@ -26,11 +36,11 @@ class AVISliderView: UIView, UITextFieldDelegate {
     override func awakeFromNib() {
         super.awakeFromNib()
         thumbView.isUserInteractionEnabled = false
-        sliderTextField.textAlignment = .center
-        sliderTextField.delegate = self
+        valueTextField.textAlignment = .center
+        valueTextField.delegate = self
         if customThumb { slider.setThumbImage(UIImage(named:"clearImage"), for: .normal) }
         thumbView.isHidden = !customThumb
-        sliderTextField.text = String(Int(slider.value))
+        valueTextField.text = String(Int(slider.value))
 
         let tapOnSliderGesture = UILongPressGestureRecognizer(target: self, action: #selector(tapOnSlider))
         tapOnSliderGesture.minimumPressDuration = 0
@@ -54,20 +64,21 @@ class AVISliderView: UIView, UITextFieldDelegate {
     
     var thumbTitle = String() {
         didSet {
-            sliderTitleView.text = thumbTitle
+            let attributedString = NSMutableAttributedString(string: thumbTitle)
+            attributedString.addAttribute(NSAttributedStringKey.kern, value: 1.5, range: NSRange(location: 0, length: attributedString.length - 1))
+            sliderTitleView.attributedText = attributedString
         }
     }
-    
     
     @IBOutlet weak var sliderTitleView: UITextField!
     @IBOutlet weak var thumbView: UIView!
     @IBOutlet weak var sliderViewContainer: UIView!
     @IBOutlet weak var slider: AVISlider!
-    @IBOutlet weak var sliderTextField: UITextField! {
+    @IBOutlet weak var valueTextField: ValueTextField! {
         didSet {
-            sliderTextField.backgroundColor = textFieldBackgroundColor
-            sliderTextField.font = FontBook.Regular.of(size: 20)
-            sliderTextField.textColor = textFieldTextColor
+            valueTextField.backgroundColor = textFieldBackgroundColor
+            valueTextField.font = FontBook.Regular.of(size: 20)
+            valueTextField.textColor = textFieldTextColor
         }
     }
     
@@ -76,7 +87,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     }
     
     func didSliderChange(_ value: Float) {
-        sliderTextField.text = String(Int(value))
+        valueTextField.setValue(String(Int(value)), unit: unit)
     }
     
     func setSliderValue(_ value: Float) {
@@ -87,18 +98,20 @@ class AVISliderView: UIView, UITextFieldDelegate {
     
 
     // MARK: - TextField Delegates
+    var unit = "%"
+    
     var textFieldBackgroundColor = UIColor(red: 237/255,
                                            green: 242/255,
                                            blue: 247/255,
                                            alpha: 1) {
         didSet {
-            sliderTextField.backgroundColor = textFieldBackgroundColor
+            valueTextField.backgroundColor = textFieldBackgroundColor
         }
     }
     
     var textFieldTextColor = UIColor(red: 101/255, green: 109/255, blue: 122/255, alpha: 1) {
         didSet {
-            sliderTextField.textColor = textFieldTextColor
+            valueTextField.textColor = textFieldTextColor
         }
     }
         
@@ -109,9 +122,14 @@ class AVISliderView: UIView, UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        let current = textField.text!
+        let current = textField.text!.numbers
         let complete = Int(current + string)
         return complete! <= Int(slider.maximumValue) && complete! >= Int(slider.minimumValue)
+    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        textField.text = textField.text?.numbers
+        return true
     }
     
     // move the custom thumb
@@ -161,6 +179,12 @@ enum FontBook: String {
     case Regular = "HelveticaNeue"
     func of(size: CGFloat) -> UIFont {
         return UIFont(name: self.rawValue, size: size)!
+    }
+}
+
+extension String {
+    var numbers: String {
+        return String(describing: filter { String($0).rangeOfCharacter(from: CharacterSet(charactersIn: "0123456789")) != nil })
     }
 }
 

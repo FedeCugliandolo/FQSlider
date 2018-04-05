@@ -18,6 +18,6 @@ class AVIDimSliderView: AVISliderView {
         slider.maxColor = #colorLiteral(red: 0.8666666667, green: 0.8901960784, blue: 0.9137254902, alpha: 1)
         slider.colors = [slider.minColor.cgColor, slider.maxColor.cgColor]
         slider.hasGradient = false
-        thumbTitle = "DIM"
+        thumbTitle = "DIM".localizedUppercase
     }
 }

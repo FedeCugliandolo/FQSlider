@@ -12,11 +12,12 @@ import UIKit
 class AVISatSliderView: AVISliderView {
     override func awakeFromNib() {
         super.awakeFromNib()
-        slider.value = 0.5 // TODO: read fromm cloud/device
+        slider.minimumValue = 0
+        slider.maximumValue = 100
+        slider.value = 50 // TODO: read fromm cloud/device
         slider.prepare(minColor: UIColor.white, maxColor: UIColor.purple, gradient: true)
         NotificationCenter.default.addObserver(self, selector: #selector(getHueForSat), name: NSNotification.Name("HUEColorNotification"), object: nil)
-        
-        thumbTitle = "SAT"
+        thumbTitle = "SAT".localizedUppercase
     }
     
     @objc func getHueForSat(notification: Notification) {
@@ -25,7 +26,7 @@ class AVISatSliderView: AVISliderView {
     }
     
     override func didSliderChange(_ value: Float) {
-        super.didSliderChange(value * 100) // show textfield percentage
-        NotificationCenter.default.post(name: NSNotification.Name("SatColorNotification"), object: nil, userInfo: ["SatColor" : CGFloat(value)])
+        super.didSliderChange(value) // show textfield percentage
+        NotificationCenter.default.post(name: NSNotification.Name("SatColorNotification"), object: nil, userInfo: ["SatColor" : CGFloat(value/100)])
     }
 }
