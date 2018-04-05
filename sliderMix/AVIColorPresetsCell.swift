@@ -18,8 +18,22 @@ class AVIColorPresetCell: UICollectionViewCell {
         super.awakeFromNib()
         layer.cornerRadius = 8
         layer.masksToBounds = true
+        
+        nameLabel.textColor = UIColor.white
+        nameLabel.font = FontBook.Bold.of(size: 11)
+        nameLabel.addShadow()
     }
     
+}
+
+extension UILabel {
+    func addShadow(color : UIColor = UIColor.gray, radius: CGFloat = 2, offset: CGSize = CGSize(width: 1, height: 1), opacity: Float = 1) {
+        self.layer.shadowColor = color.cgColor
+        self.layer.shadowRadius = radius
+        self.layer.shadowOffset = offset
+        self.layer.shadowOpacity = opacity
+        self.layer.masksToBounds = false
+    }
 }
 
 

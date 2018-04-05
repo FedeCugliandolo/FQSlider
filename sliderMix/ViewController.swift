@@ -46,7 +46,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.backgroundColor = defaultPresets[indexPath.item].color
         if let presetCell = cell as? AVIColorPresetCell {
-            presetCell.nameLabel?.text = defaultPresets[indexPath.item].name
+            presetCell.nameLabel?.text = defaultPresets[indexPath.item].name.uppercased()
         }
     }
 

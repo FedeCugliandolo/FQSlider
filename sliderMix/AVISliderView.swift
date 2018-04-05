@@ -167,6 +167,8 @@ class AVISliderView: UIView, UITextFieldDelegate {
 
 enum FontBook: String {
     case Regular = "HelveticaNeue"
+    case Thin = "HelveticaNeue-Thin"
+    case Bold = "HelveticaNeue-Bold"
     func of(size: CGFloat) -> UIFont {
         return UIFont(name: self.rawValue, size: size)!
     }
