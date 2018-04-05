@@ -22,7 +22,7 @@
 		7DA6E30B200724C300B9C7BD /* AVISatSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA6E30A200724C300B9C7BD /* AVISatSliderView.swift */; };
 		7DA6E30D2007CB2000B9C7BD /* AVICCTSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA6E30C2007CB2000B9C7BD /* AVICCTSliderView.swift */; };
 		7DA6E30F2008029800B9C7BD /* AVICurrentColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA6E30E2008029800B9C7BD /* AVICurrentColorView.swift */; };
-		7DA6E3112008333C00B9C7BD /* AVIColorPresetsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA6E3102008333C00B9C7BD /* AVIColorPresetsView.swift */; };
+		7DA6E3112008333C00B9C7BD /* AVIColorPresetsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA6E3102008333C00B9C7BD /* AVIColorPresetsCell.swift */; };
 		7DD0DCDB200572E2007B8EAC /* AVIDimSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DD0DCDA200572E2007B8EAC /* AVIDimSliderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -65,7 +65,7 @@
 		7DA6E30A200724C300B9C7BD /* AVISatSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVISatSliderView.swift; sourceTree = "<group>"; };
 		7DA6E30C2007CB2000B9C7BD /* AVICCTSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVICCTSliderView.swift; sourceTree = "<group>"; };
 		7DA6E30E2008029800B9C7BD /* AVICurrentColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVICurrentColorView.swift; sourceTree = "<group>"; };
-		7DA6E3102008333C00B9C7BD /* AVIColorPresetsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVIColorPresetsView.swift; sourceTree = "<group>"; };
+		7DA6E3102008333C00B9C7BD /* AVIColorPresetsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVIColorPresetsCell.swift; sourceTree = "<group>"; };
 		7DD0DCDA200572E2007B8EAC /* AVIDimSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVIDimSliderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -131,7 +131,7 @@
 				7DA6E30A200724C300B9C7BD /* AVISatSliderView.swift */,
 				7DA6E30C2007CB2000B9C7BD /* AVICCTSliderView.swift */,
 				7DA6E30E2008029800B9C7BD /* AVICurrentColorView.swift */,
-				7DA6E3102008333C00B9C7BD /* AVIColorPresetsView.swift */,
+				7DA6E3102008333C00B9C7BD /* AVIColorPresetsCell.swift */,
 				7D3AFE9420126E870083D47A /* AVIColorPresetCell.xib */,
 			);
 			path = sliderMix;
@@ -293,7 +293,7 @@
 			files = (
 				7DD0DCDB200572E2007B8EAC /* AVIDimSliderView.swift in Sources */,
 				7DA6E30920071C5300B9C7BD /* AVIHueSliderView.swift in Sources */,
-				7DA6E3112008333C00B9C7BD /* AVIColorPresetsView.swift in Sources */,
+				7DA6E3112008333C00B9C7BD /* AVIColorPresetsCell.swift in Sources */,
 				7DA6E30D2007CB2000B9C7BD /* AVICCTSliderView.swift in Sources */,
 				7D0960612003DD9C008818DD /* AVISliderView.swift in Sources */,
 				7DA6E30F2008029800B9C7BD /* AVICurrentColorView.swift in Sources */,
