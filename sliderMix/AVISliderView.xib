@@ -29,7 +29,7 @@
                 <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="eka-JE-pJ7">
                     <rect key="frame" x="10" y="12" width="355" height="31"/>
                     <subviews>
-                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z7u-kc-AxE" customClass="ValueTextField" customModule="sliderMix" customModuleProvider="target">
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="Z7u-kc-AxE">
                             <rect key="frame" x="0.0" y="0.0" width="59" height="31"/>
                             <rect key="contentStretch" x="0.0" y="0.0" width="0.0" height="0.0"/>
                             <constraints>

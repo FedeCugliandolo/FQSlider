@@ -9,16 +9,6 @@
 import Foundation
 import UIKit
 
-class ValueTextField: UITextField, UITextFieldDelegate
-{
-    var value = ""
-    var unit = "%"
-    
-    func setValue(_ value: String, unit: String) {
-        self.text = value + " " + unit
-    }
-}
-
 @IBDesignable
 class AVISliderView: UIView, UITextFieldDelegate {
     @IBOutlet var mainView: UIView!
@@ -74,7 +64,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     @IBOutlet weak var thumbView: UIView!
     @IBOutlet weak var sliderViewContainer: UIView!
     @IBOutlet weak var slider: AVISlider!
-    @IBOutlet weak var valueTextField: ValueTextField! {
+    @IBOutlet weak var valueTextField: UITextField! {
         didSet {
             valueTextField.backgroundColor = textFieldBackgroundColor
             valueTextField.font = FontBook.Regular.of(size: 20)
@@ -87,7 +77,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     }
     
     func didSliderChange(_ value: Float) {
-        valueTextField.setValue(String(Int(value)), unit: unit)
+        valueTextField.text = String(Int(value)) + " " + unit
     }
     
     func setSliderValue(_ value: Float) {
