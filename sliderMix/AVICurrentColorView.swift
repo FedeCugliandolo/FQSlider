@@ -14,6 +14,7 @@ class AVICurrentColorView: UIView {
         super.awakeFromNib()
         layer.cornerRadius = 8
         NotificationCenter.default.addObserver(self, selector: #selector(getCurrentColor), name: NSNotification.Name("finalColorNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getCurrentColor), name: NSNotification.Name("selectedPresetColorNotification"), object: nil)
     }
     
     @IBOutlet weak var currentSettingsTitleLablel: UILabel! {

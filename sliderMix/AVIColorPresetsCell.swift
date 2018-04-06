@@ -14,6 +14,8 @@ class AVIColorPresetCell: UICollectionViewCell {
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var preset = Preset()
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 8

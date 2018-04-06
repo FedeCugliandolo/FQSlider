@@ -80,6 +80,9 @@
                                                 <state key="normal" title="SAVE">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="savePresetAction:" destination="H6x-yK-tma" eventType="touchUpInside" id="Bf7-Xi-cLL"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.51511548979999999" green="0.5017277631" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -25,6 +25,13 @@ class AVIHueSliderView: AVISliderView {
         unit = "°"
         
         shadowOnValueText = true
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getSelectedHUE), name: NSNotification.Name("selectedHUENotification"), object: nil)
+    }
+    
+    @objc func getSelectedHUE(notification: Notification) {
+        let HUEValue = notification.userInfo?["HUE"] as! CGFloat
+        setSliderValue(Float(HUEValue) * 360)
     }
     
     override func didSliderChange(_ value: Float) {

@@ -16,8 +16,15 @@ class AVISatSliderView: AVISliderView {
         slider.maximumValue = 100
         slider.value = 50 // TODO: read fromm cloud/device
         slider.prepare(minColor: UIColor.white, maxColor: UIColor.purple, gradient: true)
-        NotificationCenter.default.addObserver(self, selector: #selector(getHueForSat), name: NSNotification.Name("HUEColorNotification"), object: nil)
         thumbTitle = "SAT".localizedUppercase
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getHueForSat), name: NSNotification.Name("HUEColorNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getSelectedSAT), name: NSNotification.Name("selectedSATNotification"), object: nil)
+    }
+    
+    @objc func getSelectedSAT(notification: Notification) {
+        let SATValue = notification.userInfo?["SAT"] as! CGFloat
+        setSliderValue(Float(SATValue) * 100)
     }
     
     @objc func getHueForSat(notification: Notification) {
