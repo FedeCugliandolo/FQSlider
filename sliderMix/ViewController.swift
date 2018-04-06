@@ -30,7 +30,8 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                           Preset(original: true, color: #colorLiteral(red: 0.007843137255, green: 0.831372549, blue: 1, alpha: 1), selected: false, name: "Focus"),
                           Preset(original: true, color: #colorLiteral(red: 0.9960784314, green: 0.7490196078, blue: 0.1333333333, alpha: 1), selected: false, name: "Sunrise"),
                           Preset(original: true, color: #colorLiteral(red: 1, green: 0.2196078431, blue: 0, alpha: 1), selected: false, name: "Romantic"),
-                          Preset(original: true, color: #colorLiteral(red: 0.8745098039, green: 0.1607843137, blue: 0.9725490196, alpha: 1), selected: false, name: "Party")]
+                          Preset(original: true, color: #colorLiteral(red: 0.8745098039, green: 0.1607843137, blue: 0.9725490196, alpha: 1), selected: false, name: "Party"),
+                          Preset(original: true, color: #colorLiteral(red: 0.3137254902, green: 0.8901960784, blue: 0.7607843137, alpha: 1), selected: false, name: "Aqua")]
     
     var totalPresets = [Preset]()
     
@@ -50,20 +51,28 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             presetCell.preset = totalPresets[indexPath.item]
             presetCell.backgroundColor = presetCell.preset.color
             presetCell.nameLabel?.text = presetCell.preset.name.uppercased()
+            presetCell.selectedImageView.isHidden = !presetCell.preset.selected
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         if let presetCell = collectionView.cellForItem(at: indexPath) as? AVIColorPresetCell {
             presetCell.selectedImageView.isHidden = true
+            presetCell.preset.selected = false
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let presetCell = collectionView.cellForItem(at: indexPath) as? AVIColorPresetCell {
-            presetCell.selectedImageView.isHidden = false
-            finalColor = presetCell.preset.color
             
+            for preset in totalPresets {
+                preset.selected = false
+            }
+            
+            presetCell.selectedImageView.isHidden = false
+            presetCell.preset.selected = true
+            
+            finalColor = presetCell.preset.color
             // get color's components
             var hue        : CGFloat = 0
             var saturation : CGFloat = 0
@@ -91,6 +100,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             self.totalPresets.insert(newPreset, at: 0)
             self.presetsCollectionView.reloadData()
             self.presetsCollectionView.setContentOffset(CGPoint.zero, animated: true)
+            
             }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (alertAction) in
             print("CANCEL")
