@@ -9,21 +9,30 @@
 import Foundation
 import UIKit
 
+protocol AVIColorPresetCellDelegate {
+    func didTapDeleteButton(preset: Preset)
+}
+
 class AVIColorPresetCell: UICollectionViewCell {
     
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var deleteButton: UIButton!
+    var delegate: AVIColorPresetCellDelegate?
     
     var preset = Preset()
     
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 8
-        layer.masksToBounds = true
         
         nameLabel.textColor = UIColor.white
         nameLabel.font = FontBook.Bold.of(size: 11) // TODO: multipler for iPad
         nameLabel.addShadow()
+    }
+    
+    @IBAction func deletePresetAction(_ sender: Any) {
+        delegate?.didTapDeleteButton(preset: self.preset)
     }
     
 }

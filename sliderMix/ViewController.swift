@@ -23,7 +23,7 @@ class Preset
     }
 }
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AVIColorPresetCellDelegate {
     @IBOutlet weak var presetsCollectionView:UICollectionView!
     
     let defaultPresets = [Preset(original: true, color: #colorLiteral(red: 0.7960784314, green: 1, blue: 0, alpha: 1), selected: false, name: "Relax"),
@@ -48,10 +48,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let presetCell = cell as? AVIColorPresetCell {
+            presetCell.delegate = self
             presetCell.preset = totalPresets[indexPath.item]
             presetCell.backgroundColor = presetCell.preset.color
             presetCell.nameLabel?.text = presetCell.preset.name.uppercased()
             presetCell.selectedImageView.isHidden = !presetCell.preset.selected
+            presetCell.deleteButton.isHidden = presetCell.preset.original
         }
     }
     
@@ -62,12 +64,15 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
+    func unselectAllPresets() {
+        totalPresets.forEach { $0.selected = false }
+        presetsCollectionView.reloadData()
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let presetCell = collectionView.cellForItem(at: indexPath) as? AVIColorPresetCell {
             
-            for preset in totalPresets {
-                preset.selected = false
-            }
+            unselectAllPresets()
             
             presetCell.selectedImageView.isHidden = false
             presetCell.preset.selected = true
@@ -94,14 +99,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             textField.placeholder = "Preset name"
         }
         alert.addAction(UIAlertAction(title: "Ok".localizedCapitalized, style: UIAlertActionStyle.default, handler: { (alertAction) in
-            print(alert.textFields![0].text!)
             // TODO: verificar que tenga nombre
-            let newPreset = Preset(original: false, color: self.finalColor, selected: false, name: alert.textFields![0].text!)
+            self.unselectAllPresets()
+            let newPreset = Preset(original: false, color: self.finalColor, selected: true, name: alert.textFields![0].text!)
             self.totalPresets.insert(newPreset, at: 0)
-            self.presetsCollectionView.reloadData()
             self.presetsCollectionView.setContentOffset(CGPoint.zero, animated: true)
-            
-            }))
+            self.presetsCollectionView.reloadData()
+        }))
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (alertAction) in
             print("CANCEL")
         }))
@@ -125,6 +129,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var finalColor = UIColor.clear
     @objc func getCurrentColor (notification: Notification) {
         finalColor = notification.userInfo?["finalColor"] as? UIColor ?? UIColor.clear
+    }
+    
+    // Preset cell delegates
+    func didTapDeleteButton(preset: Preset) {
+        let deleteAlert = UIAlertController(title: "Delete Preset?", message: preset.name, preferredStyle: UIAlertControllerStyle.alert)
+        deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
+        deleteAlert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { alertAction in
+            if let index = self.totalPresets.index(where: { $0 === preset}) {
+                self.totalPresets.remove(at: index)
+                self.presetsCollectionView.reloadData()
+            }
+        }))
+        self.present(deleteAlert, animated: true, completion: nil)
     }
 }
 
