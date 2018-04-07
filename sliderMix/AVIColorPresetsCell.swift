@@ -27,8 +27,8 @@ class AVIColorPresetCell: UICollectionViewCell {
         layer.cornerRadius = 8
         
         nameLabel.textColor = UIColor.white
-        nameLabel.font = FontBook.Bold.of(size: 11) // TODO: multipler for iPad
-        nameLabel.addShadow()
+        nameLabel.font = AppFont.Bold.of(size: 11) // TODO: multipler for iPad
+        nameLabel.layer.addShadow()
     }
     
     @IBAction func deletePresetAction(_ sender: Any) {
@@ -37,13 +37,13 @@ class AVIColorPresetCell: UICollectionViewCell {
     
 }
 
-extension UILabel {
+extension CALayer {
     func addShadow(color : UIColor = UIColor.gray, radius: CGFloat = 2, offset: CGSize = CGSize(width: 1, height: 1), opacity: Float = 1) {
-        self.layer.shadowColor = color.cgColor
-        self.layer.shadowRadius = radius
-        self.layer.shadowOffset = offset
-        self.layer.shadowOpacity = opacity
-        self.layer.masksToBounds = false
+        self.shadowColor = color.cgColor
+        self.shadowRadius = radius
+        self.shadowOffset = offset
+        self.shadowOpacity = opacity
+        self.masksToBounds = false
     }
 }
 

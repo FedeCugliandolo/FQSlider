@@ -67,7 +67,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     @IBOutlet weak var valueTextField: UITextField! {
         didSet {
             valueTextField.backgroundColor = textFieldBackgroundColor
-            valueTextField.font = FontBook.Regular.of(size: 20)
+            valueTextField.font = AppFont.Regular.of(size: 20)
             valueTextField.textColor = textFieldTextColor
         }
     }
@@ -168,7 +168,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     }
 }
 
-enum FontBook: String {
+enum AppFont: String {
     case Regular = "HelveticaNeue"
     case Thin = "HelveticaNeue-Thin"
     case Bold = "HelveticaNeue-Bold"

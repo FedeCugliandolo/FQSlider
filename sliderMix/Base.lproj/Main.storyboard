@@ -66,20 +66,20 @@
                                         <rect key="frame" x="10" y="70" width="355" height="48"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_current_settings_" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JH0-zN-g6k">
-                                                <rect key="frame" x="8" y="17" width="138" height="14.333333333333336"/>
+                                                <rect key="frame" x="13" y="17" width="133" height="14.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2c-W4-25e">
-                                                <rect key="frame" x="302" y="8" width="43" height="32"/>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j2c-W4-25e">
+                                                <rect key="frame" x="279" y="13" width="66" height="22"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="Pft-my-4HW"/>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <state key="normal" title="SAVE">
+                                                <state key="normal" title="SAVE" image="whitePlus">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <state key="highlighted" image="whitePlus"/>
                                                 <connections>
                                                     <action selector="savePresetAction:" destination="H6x-yK-tma" eventType="touchUpInside" id="Bf7-Xi-cLL"/>
                                                 </connections>
@@ -91,12 +91,13 @@
                                             <constraint firstAttribute="height" constant="48" id="FO2-5k-BrV"/>
                                             <constraint firstItem="j2c-W4-25e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hMp-x3-Eb1" secondAttribute="leading" constant="20" symbolic="YES" id="Fbk-NU-XzV"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JH0-zN-g6k" secondAttribute="trailing" constant="209.33333333333334" id="b1J-qQ-gs9"/>
-                                            <constraint firstItem="JH0-zN-g6k" firstAttribute="leading" secondItem="hMp-x3-Eb1" secondAttribute="leading" constant="8" id="bH7-x0-yhg"/>
+                                            <constraint firstItem="JH0-zN-g6k" firstAttribute="leading" secondItem="hMp-x3-Eb1" secondAttribute="leading" constant="13" id="bH7-x0-yhg"/>
                                             <constraint firstAttribute="trailing" secondItem="j2c-W4-25e" secondAttribute="trailing" constant="10" id="tlA-yB-Uv5"/>
                                             <constraint firstItem="j2c-W4-25e" firstAttribute="centerY" secondItem="hMp-x3-Eb1" secondAttribute="centerY" id="zrj-or-fui"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="currentSettingsTitleLablel" destination="JH0-zN-g6k" id="kUo-Wi-leX"/>
+                                            <outlet property="saveButton" destination="j2c-W4-25e" id="eWi-yB-nmW"/>
                                         </connections>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cRc-tq-BGR" customClass="AVIDimSliderView" customModule="sliderMix" customModuleProvider="target">
@@ -183,4 +184,7 @@
             <point key="canvasLocation" x="-41" y="215"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="whitePlus" width="22" height="22"/>
+    </resources>
 </document>

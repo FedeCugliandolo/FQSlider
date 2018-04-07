@@ -20,8 +20,24 @@ class AVICurrentColorView: UIView {
     @IBOutlet weak var currentSettingsTitleLablel: UILabel! {
         didSet {
             currentSettingsTitleLablel.text = "CURRENT SETTINGS"
+            currentSettingsTitleLablel.font = AppFont.Bold.of(size: 14) // TODO: multiplier iPad
+            currentSettingsTitleLablel.layer.addShadow()
         }
     }
+    
+    @IBOutlet weak var saveButton: UIButton! {
+        didSet {
+            saveButton.setTitle("SAVE", for: .normal)
+            saveButton.titleLabel?.font = AppFont.Bold.of(size: 14)
+            saveButton.titleLabel?.layer.addShadow()
+            saveButton.imageView?.layer.addShadow()
+            let spacing: CGFloat = 5
+            saveButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -spacing, bottom: 0, right: spacing)
+            saveButton.titleEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: -spacing)
+            saveButton.contentEdgeInsets = UIEdgeInsets(top: 0, left: spacing, bottom: 0, right: spacing)
+        }
+    }
+    
     var currentColor = UIColor()
     
     @objc func getCurrentColor (notification: Notification) {
