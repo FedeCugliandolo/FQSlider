@@ -94,9 +94,9 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     // MARK: - Actions
     
     @IBAction func savePresetAction(_ sender: Any) {
-        let alert = UIAlertController(title: "Save Preset?", message: nil, preferredStyle: UIAlertControllerStyle.alert)
+        let alert = UIAlertController(title: "Save New Preset?", message: "Please enter the name for the new Preset:", preferredStyle: UIAlertControllerStyle.alert)
         alert.addTextField { (textField) in
-            textField.placeholder = "Preset name"
+            textField.placeholder = "i.e. Afternoon"
         }
         alert.addAction(UIAlertAction(title: "Ok".localizedCapitalized, style: UIAlertActionStyle.default, handler: { (alertAction) in
             // TODO: verificar que tenga nombre
