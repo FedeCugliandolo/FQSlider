@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		7D0960322003DC73008818DD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960312003DC73008818DD /* AppDelegate.swift */; };
-		7D0960342003DC73008818DD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960332003DC73008818DD /* ViewController.swift */; };
-		7D0960372003DC73008818DD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0960352003DC73008818DD /* Main.storyboard */; };
+		7D0960342003DC73008818DD /* MainLuminetixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960332003DC73008818DD /* MainLuminetixViewController.swift */; };
+		7D0960372003DC73008818DD /* Luminetix.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D0960352003DC73008818DD /* Luminetix.storyboard */; };
 		7D0960392003DC73008818DD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7D0960382003DC73008818DD /* Assets.xcassets */; };
 		7D09603C2003DC73008818DD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7D09603A2003DC73008818DD /* LaunchScreen.storyboard */; };
 		7D0960472003DC74008818DD /* sliderMixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960462003DC74008818DD /* sliderMixTests.swift */; };
@@ -46,8 +46,8 @@
 /* Begin PBXFileReference section */
 		7D09602E2003DC73008818DD /* sliderMix.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sliderMix.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7D0960312003DC73008818DD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7D0960332003DC73008818DD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7D0960362003DC73008818DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7D0960332003DC73008818DD /* MainLuminetixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLuminetixViewController.swift; sourceTree = "<group>"; };
+		7D0960362003DC73008818DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Luminetix.storyboard; sourceTree = "<group>"; };
 		7D0960382003DC73008818DD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7D09603B2003DC73008818DD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7D09603D2003DC73008818DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -120,8 +120,8 @@
 				7D0960602003DD9C008818DD /* FQSlider.swift */,
 				7D09605F2003DD9C008818DD /* AVISliderView.swift */,
 				7D0960312003DC73008818DD /* AppDelegate.swift */,
-				7D0960332003DC73008818DD /* ViewController.swift */,
-				7D0960352003DC73008818DD /* Main.storyboard */,
+				7D0960332003DC73008818DD /* MainLuminetixViewController.swift */,
+				7D0960352003DC73008818DD /* Luminetix.storyboard */,
 				7D0960382003DC73008818DD /* Assets.xcassets */,
 				7D09603A2003DC73008818DD /* LaunchScreen.storyboard */,
 				7D09603D2003DC73008818DD /* Info.plist */,
@@ -266,7 +266,7 @@
 				7D3AFE9520126E870083D47A /* AVIColorPresetCell.xib in Resources */,
 				7D1603E42003EAB0005FF967 /* AVISliderView.xib in Resources */,
 				7D0960392003DC73008818DD /* Assets.xcassets in Resources */,
-				7D0960372003DC73008818DD /* Main.storyboard in Resources */,
+				7D0960372003DC73008818DD /* Luminetix.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,7 +299,7 @@
 				7DA6E30F2008029800B9C7BD /* AVICurrentColorView.swift in Sources */,
 				7D0960622003DD9C008818DD /* FQSlider.swift in Sources */,
 				7DA6E30B200724C300B9C7BD /* AVISatSliderView.swift in Sources */,
-				7D0960342003DC73008818DD /* ViewController.swift in Sources */,
+				7D0960342003DC73008818DD /* MainLuminetixViewController.swift in Sources */,
 				7D0960322003DC73008818DD /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,12 +336,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		7D0960352003DC73008818DD /* Main.storyboard */ = {
+		7D0960352003DC73008818DD /* Luminetix.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				7D0960362003DC73008818DD /* Base */,
 			);
-			name = Main.storyboard;
+			name = Luminetix.storyboard;
 			sourceTree = "<group>";
 		};
 		7D09603A2003DC73008818DD /* LaunchScreen.storyboard */ = {

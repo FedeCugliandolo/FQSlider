@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Main Luminetix View Controller-->
         <scene sceneID="BRo-RP-p94">
             <objects>
-                <viewController id="H6x-yK-tma" customClass="ViewController" customModule="sliderMix" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LuminetixStoryboard" id="H6x-yK-tma" customClass="MainLuminetixViewController" customModule="sliderMix" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iqB-B2-szc">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

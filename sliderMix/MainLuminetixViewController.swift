@@ -25,7 +25,7 @@ class Preset
     }
 }
 
-class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AVIColorPresetCellDelegate {
+class MainLuminetixViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AVIColorPresetCellDelegate {
     @IBOutlet weak var presetsCollectionView:UICollectionView!
     
     let defaultPresets = [Preset(original: true, color: #colorLiteral(red: 0.7960784314, green: 1, blue: 0, alpha: 1), selected: false, name: "Relax"),
