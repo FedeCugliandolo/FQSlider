@@ -63,7 +63,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     @IBOutlet weak var sliderTitleView: UITextField!
     @IBOutlet weak var thumbView: UIView!
     @IBOutlet weak var sliderViewContainer: UIView!
-    @IBOutlet weak var slider: AVISlider!
+    @IBOutlet weak var slider: FQSlider!
     @IBOutlet weak var valueTextField: UITextField! {
         didSet {
             valueTextField.backgroundColor = textFieldBackgroundColor
@@ -89,7 +89,6 @@ class AVISliderView: UIView, UITextFieldDelegate {
         didSliderChange(slider.value)
     }
     
-
     // MARK: - TextField Delegates
     var unit = "%"
     
@@ -111,6 +110,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         guard !(textField.text?.isEmpty)! else { return false }
         setSliderValue((textField.text! as NSString).floatValue)
+        NotificationCenter.default.post(name: NSNotification.Name("sliderChangeNotification"), object: nil, userInfo: nil)
         return true
     }
     
@@ -152,8 +152,11 @@ class AVISliderView: UIView, UITextFieldDelegate {
             denormalizedValue = slider.maximumValue
         }
         
+        NotificationCenter.default.post(name: NSNotification.Name("sliderChangeNotification"), object: nil, userInfo: ["clearPresets": clearSelectedPresets])
         setSliderValue(denormalizedValue)
     }
+    
+    var clearSelectedPresets = true
     
     struct FinalColor {
         var HUE: CGFloat

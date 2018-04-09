@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class AVISlider: UISlider {
+class FQSlider: UISlider {
     @IBInspectable var trackHeight: Float = 0.0
     
     @IBInspectable var minColor:UIColor = UIColor.clear

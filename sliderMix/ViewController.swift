@@ -64,7 +64,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         }
     }
     
-    func unselectAllPresets() {
+    @objc func unselectAllPresets() {
         totalPresets.forEach { $0.selected = false }
         presetsCollectionView.reloadData()
     }
@@ -73,7 +73,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let presetCell = collectionView.cellForItem(at: indexPath) as? AVIColorPresetCell {
             
             unselectAllPresets()
-            
+
             presetCell.selectedImageView.isHidden = false
             presetCell.preset.selected = true
             
@@ -124,6 +124,12 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         totalPresets = defaultPresets
         
         NotificationCenter.default.addObserver(self, selector: #selector(getCurrentColor), name: NSNotification.Name("finalColorNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(sliderChangeNotification), name: NSNotification.Name("sliderChangeNotification"), object: nil)
+    }
+    
+    @objc func sliderChangeNotification(notification: Notification) {
+        guard notification.userInfo?["clearPresets"] as! Bool else { return }
+        unselectAllPresets()
     }
     
     var finalColor = UIColor.clear

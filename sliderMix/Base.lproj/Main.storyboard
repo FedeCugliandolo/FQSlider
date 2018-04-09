@@ -124,7 +124,7 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="hasGradient" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVB-Oz-hdW" customClass="AVICCTSliderView" customModule="sliderMix" customModuleProvider="target">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XVB-Oz-hdW" userLabel="CCT Slider View" customClass="AVICCTSliderView" customModule="sliderMix" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="283" width="375" height="55"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>

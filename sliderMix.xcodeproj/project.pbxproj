@@ -15,7 +15,7 @@
 		7D0960472003DC74008818DD /* sliderMixTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960462003DC74008818DD /* sliderMixTests.swift */; };
 		7D0960522003DC74008818DD /* sliderMixUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960512003DC74008818DD /* sliderMixUITests.swift */; };
 		7D0960612003DD9C008818DD /* AVISliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D09605F2003DD9C008818DD /* AVISliderView.swift */; };
-		7D0960622003DD9C008818DD /* AVISlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960602003DD9C008818DD /* AVISlider.swift */; };
+		7D0960622003DD9C008818DD /* FQSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7D0960602003DD9C008818DD /* FQSlider.swift */; };
 		7D1603E42003EAB0005FF967 /* AVISliderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D1603E32003EAB0005FF967 /* AVISliderView.xib */; };
 		7D3AFE9520126E870083D47A /* AVIColorPresetCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7D3AFE9420126E870083D47A /* AVIColorPresetCell.xib */; };
 		7DA6E30920071C5300B9C7BD /* AVIHueSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7DA6E30820071C5300B9C7BD /* AVIHueSliderView.swift */; };
@@ -58,7 +58,7 @@
 		7D0960512003DC74008818DD /* sliderMixUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sliderMixUITests.swift; sourceTree = "<group>"; };
 		7D0960532003DC74008818DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7D09605F2003DD9C008818DD /* AVISliderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVISliderView.swift; sourceTree = "<group>"; };
-		7D0960602003DD9C008818DD /* AVISlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVISlider.swift; sourceTree = "<group>"; };
+		7D0960602003DD9C008818DD /* FQSlider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FQSlider.swift; sourceTree = "<group>"; };
 		7D1603E32003EAB0005FF967 /* AVISliderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AVISliderView.xib; sourceTree = "<group>"; };
 		7D3AFE9420126E870083D47A /* AVIColorPresetCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AVIColorPresetCell.xib; sourceTree = "<group>"; };
 		7DA6E30820071C5300B9C7BD /* AVIHueSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AVIHueSliderView.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		7D0960302003DC73008818DD /* sliderMix */ = {
 			isa = PBXGroup;
 			children = (
-				7D0960602003DD9C008818DD /* AVISlider.swift */,
+				7D0960602003DD9C008818DD /* FQSlider.swift */,
 				7D09605F2003DD9C008818DD /* AVISliderView.swift */,
 				7D0960312003DC73008818DD /* AppDelegate.swift */,
 				7D0960332003DC73008818DD /* ViewController.swift */,
@@ -297,7 +297,7 @@
 				7DA6E30D2007CB2000B9C7BD /* AVICCTSliderView.swift in Sources */,
 				7D0960612003DD9C008818DD /* AVISliderView.swift in Sources */,
 				7DA6E30F2008029800B9C7BD /* AVICurrentColorView.swift in Sources */,
-				7D0960622003DD9C008818DD /* AVISlider.swift in Sources */,
+				7D0960622003DD9C008818DD /* FQSlider.swift in Sources */,
 				7DA6E30B200724C300B9C7BD /* AVISatSliderView.swift in Sources */,
 				7D0960342003DC73008818DD /* ViewController.swift in Sources */,
 				7D0960322003DC73008818DD /* AppDelegate.swift in Sources */,

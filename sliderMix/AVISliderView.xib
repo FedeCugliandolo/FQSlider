@@ -43,7 +43,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ywe-oS-DI3">
                             <rect key="frame" x="79" y="0.0" width="276" height="31"/>
                             <subviews>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Bke-IX-LUe" customClass="AVISlider" customModule="sliderMix" customModuleProvider="target">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="50" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="Bke-IX-LUe" customClass="FQSlider" customModule="sliderMix" customModuleProvider="target">
                                     <rect key="frame" x="18" y="1" width="230" height="31"/>
                                     <userDefinedRuntimeAttributes>
                                         <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
@@ -53,7 +53,7 @@
                                         <userDefinedRuntimeAttribute type="boolean" keyPath="hasGradient" value="YES"/>
                                     </userDefinedRuntimeAttributes>
                                     <connections>
-                                        <action selector="sliderValueChange:" destination="-1" eventType="valueChanged" id="mZ4-ZK-nFA"/>
+                                        <action selector="sliderValueChange:" destination="-1" eventType="valueChanged" id="ZRA-TO-QDy"/>
                                     </connections>
                                 </slider>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LC9-GQ-2Od">
@@ -107,6 +107,7 @@
             <constraints>
                 <constraint firstItem="eka-JE-pJ7" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="K3Z-Uf-yBD"/>
                 <constraint firstItem="eka-JE-pJ7" firstAttribute="leadingMargin" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="WIb-Sa-Kt7"/>
+                <constraint firstItem="Bke-IX-LUe" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="109" id="XcD-6M-QBH"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="eka-JE-pJ7" secondAttribute="trailing" constant="10" id="tBw-Ju-pjo"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
