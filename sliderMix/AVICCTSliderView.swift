@@ -25,8 +25,15 @@ class AVICCTSliderView: AVISliderView {
         unit = "k"
         slider.minimumValue = cctMinValue
         slider.maximumValue = cctMaxValue
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(getSelectedCCT), name: NSNotification.Name("selectedCCTNotification"), object: nil)
     }
 
+    @objc func getSelectedCCT(notification: Notification) {
+        let CCTValue = notification.userInfo?["CCT"] as! Float
+        setSliderValue(CCTValue)
+    }
+    
     override func didSliderChange(_ value: Float) {
         super.didSliderChange(value)
         NotificationCenter.default.post(name: NSNotification.Name("CCTColorNotification"), object: nil, userInfo: ["CCTValue" :  value])

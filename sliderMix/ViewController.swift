@@ -14,9 +14,9 @@ class Preset
     var color: UIColor
     var selected: Bool
     var name: String
-    var cct: UIColor
+    var cct: Float
     
-    init(original: Bool = false, color: UIColor = UIColor.clear, selected: Bool = false, name: String = "", cct: UIColor = UIColor.clear) {
+    init(original: Bool = false, color: UIColor = UIColor.clear, selected: Bool = false, name: String = "", cct: Float = 4600) {
         self.original = original
         self.color = color
         self.selected = selected
@@ -28,12 +28,12 @@ class Preset
 class ViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, AVIColorPresetCellDelegate {
     @IBOutlet weak var presetsCollectionView:UICollectionView!
     
-    let defaultPresets = [Preset(original: true, color: #colorLiteral(red: 0.7960784314, green: 1, blue: 0, alpha: 1), selected: false, name: "Relax", cct: UIColor.clear),
-                          Preset(original: true, color: #colorLiteral(red: 0.007843137255, green: 0.831372549, blue: 1, alpha: 1), selected: false, name: "Focus", cct: UIColor.clear),
-                          Preset(original: true, color: #colorLiteral(red: 0.9960784314, green: 0.7490196078, blue: 0.1333333333, alpha: 1), selected: false, name: "Sunrise", cct: UIColor.clear),
-                          Preset(original: true, color: #colorLiteral(red: 1, green: 0.2196078431, blue: 0, alpha: 1), selected: false, name: "Romantic", cct: UIColor.clear),
-                          Preset(original: true, color: #colorLiteral(red: 0.8745098039, green: 0.1607843137, blue: 0.9725490196, alpha: 1), selected: false, name: "Party", cct: UIColor.clear),
-                          Preset(original: true, color: #colorLiteral(red: 0.3137254902, green: 0.8901960784, blue: 0.7607843137, alpha: 1), selected: false, name: "Aqua", cct: UIColor.clear)]
+    let defaultPresets = [Preset(original: true, color: #colorLiteral(red: 0.7960784314, green: 1, blue: 0, alpha: 1), selected: false, name: "Relax"),
+                          Preset(original: true, color: #colorLiteral(red: 0.007843137255, green: 0.831372549, blue: 1, alpha: 1), selected: false, name: "Focus"),
+                          Preset(original: true, color: #colorLiteral(red: 0.9960784314, green: 0.7490196078, blue: 0.1333333333, alpha: 1), selected: false, name: "Sunrise"),
+                          Preset(original: true, color: #colorLiteral(red: 1, green: 0.2196078431, blue: 0, alpha: 1), selected: false, name: "Romantic"),
+                          Preset(original: true, color: #colorLiteral(red: 0.8745098039, green: 0.1607843137, blue: 0.9725490196, alpha: 1), selected: false, name: "Party"),
+                          Preset(original: true, color: #colorLiteral(red: 0.3137254902, green: 0.8901960784, blue: 0.7607843137, alpha: 1), selected: false, name: "Aqua")]
     
     var totalPresets = [Preset]()
     
@@ -52,10 +52,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         if let presetCell = cell as? AVIColorPresetCell {
             presetCell.delegate = self
             presetCell.preset = totalPresets[indexPath.item]
-            presetCell.backgroundColor = presetCell.preset.color
+            presetCell.HUEColorView.backgroundColor = presetCell.preset.color
             presetCell.nameLabel?.text = presetCell.preset.name.uppercased()
             presetCell.selectedImageView.isHidden = !presetCell.preset.selected
             presetCell.deleteButton.isHidden = presetCell.preset.original
+            presetCell.backgroundColor = UIColor.getCCTColorFrom(value: presetCell.preset.cct)
         }
     }
     
@@ -88,6 +89,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
             if finalColor.getHue(&hue, saturation: &saturation, brightness: &brightness, alpha: &alpha) {
                 NotificationCenter.default.post(name: NSNotification.Name("selectedSATNotification"), object: nil, userInfo: ["SAT" : alpha])
                 NotificationCenter.default.post(name: NSNotification.Name("selectedHUENotification"), object: nil, userInfo: ["HUE" : hue])
+                NotificationCenter.default.post(name: NSNotification.Name("selectedCCTNotification"), object: nil, userInfo: ["CCT" : presetCell.preset.cct])
             }
             NotificationCenter.default.post(name: NSNotification.Name("selectedPresetColorNotification"), object: nil, userInfo: ["finalColor" : finalColor])
         }
@@ -103,7 +105,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         alert.addAction(UIAlertAction(title: "Ok".localizedCapitalized, style: UIAlertActionStyle.default, handler: { (alertAction) in
             // TODO: verificar que tenga nombre
             self.unselectAllPresets()
-            let newPreset = Preset(original: false, color: self.finalColor, selected: true, name: alert.textFields![0].text!)
+            let newPreset = Preset(original: false, color: self.finalColor, selected: true, name: alert.textFields![0].text!, cct: self.finalCCT)
             self.totalPresets.insert(newPreset, at: 0)
             self.presetsCollectionView.setContentOffset(CGPoint.zero, animated: true)
             self.presetsCollectionView.reloadData()
@@ -126,6 +128,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         totalPresets = defaultPresets
         
         NotificationCenter.default.addObserver(self, selector: #selector(getCurrentColor), name: NSNotification.Name("finalColorNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getCurrentCCT), name: NSNotification.Name("CCTColorNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(sliderChangeNotification), name: NSNotification.Name("sliderChangeNotification"), object: nil)
     }
     
@@ -142,10 +145,13 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     }
     
     var finalColor = UIColor.clear
-    var finalCCT = UIColor.clear
+    var finalCCT = Float(0)
     @objc func getCurrentColor (notification: Notification) {
         finalColor = notification.userInfo?["finalColor"] as? UIColor ?? UIColor.clear
-        finalCCT = UIColor.getCCTColorFrom(value: notification.userInfo?["CCTValue"] as! Float)
+    }
+    
+    @objc func getCurrentCCT (notification: Notification) {
+        finalCCT = notification.userInfo?["CCTValue"] as! Float
     }
     
     // Preset cell delegates

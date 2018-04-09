@@ -18,6 +18,7 @@ class AVIColorPresetCell: UICollectionViewCell {
     @IBOutlet weak var selectedImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var HUEColorView: UIView!
     var delegate: AVIColorPresetCellDelegate?
     
     var preset = Preset()
@@ -25,6 +26,7 @@ class AVIColorPresetCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         layer.cornerRadius = 8
+        HUEColorView.layer.cornerRadius = 8
         
         nameLabel.textColor = UIColor.white
         nameLabel.font = AppFont.Bold.of(size: 11) // TODO: multipler for iPad
