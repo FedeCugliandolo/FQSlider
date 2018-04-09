@@ -161,12 +161,13 @@ class AVISliderView: UIView, UITextFieldDelegate {
     struct FinalColor {
         var HUE: CGFloat
         var SAT: CGFloat
+        var CCT: Float
     }
     
-    var finalColor = FinalColor(HUE: 0.5, SAT: 0.5) {
+    var finalColor = FinalColor(HUE: 0.5, SAT: 0.5, CCT: 4600) {
         didSet {
-            let color = UIColor(hue: finalColor.HUE, saturation: finalColor.SAT, brightness: 1, alpha: 1)
-            NotificationCenter.default.post(name: NSNotification.Name("finalColorNotification"), object: nil, userInfo: ["finalColor" : color])
+            let color = UIColor(hue: finalColor.HUE, saturation: 1, brightness: 1, alpha: finalColor.SAT)
+            NotificationCenter.default.post(name: NSNotification.Name("finalColorNotification"), object: nil, userInfo: ["finalColor" : color, "CCTValue" : finalColor.CCT])
         }
     }
 }

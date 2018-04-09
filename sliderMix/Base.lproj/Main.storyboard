@@ -62,9 +62,13 @@
                                             <constraint firstItem="FqX-f2-d3N" firstAttribute="top" secondItem="lMK-31-uCj" secondAttribute="top" constant="-8" id="sUA-ZC-WZ2"/>
                                         </constraints>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMp-x3-Eb1" customClass="AVICurrentColorView" customModule="sliderMix" customModuleProvider="target">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hMp-x3-Eb1" customClass="AVICurrentColorView" customModule="sliderMix" customModuleProvider="target">
                                         <rect key="frame" x="10" y="70" width="355" height="48"/>
                                         <subviews>
+                                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="whh-jj-eEc">
+                                                <rect key="frame" x="0.0" y="0.0" width="355" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="_current_settings_" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JH0-zN-g6k">
                                                 <rect key="frame" x="13" y="17" width="133" height="14.333333333333336"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="12"/>
@@ -85,17 +89,22 @@
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.51511548979999999" green="0.5017277631" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="JH0-zN-g6k" firstAttribute="centerY" secondItem="hMp-x3-Eb1" secondAttribute="centerY" id="DXh-wL-eMq"/>
                                             <constraint firstAttribute="height" constant="48" id="FO2-5k-BrV"/>
                                             <constraint firstItem="j2c-W4-25e" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hMp-x3-Eb1" secondAttribute="leading" constant="20" symbolic="YES" id="Fbk-NU-XzV"/>
+                                            <constraint firstItem="whh-jj-eEc" firstAttribute="leading" secondItem="hMp-x3-Eb1" secondAttribute="leading" id="QtA-h0-12v"/>
                                             <constraint firstAttribute="trailing" relation="lessThanOrEqual" secondItem="JH0-zN-g6k" secondAttribute="trailing" constant="209.33333333333334" id="b1J-qQ-gs9"/>
                                             <constraint firstItem="JH0-zN-g6k" firstAttribute="leading" secondItem="hMp-x3-Eb1" secondAttribute="leading" constant="13" id="bH7-x0-yhg"/>
+                                            <constraint firstItem="whh-jj-eEc" firstAttribute="top" secondItem="hMp-x3-Eb1" secondAttribute="top" id="pSc-H8-tbR"/>
+                                            <constraint firstAttribute="trailing" secondItem="whh-jj-eEc" secondAttribute="trailing" id="t4V-Q7-xCN"/>
                                             <constraint firstAttribute="trailing" secondItem="j2c-W4-25e" secondAttribute="trailing" constant="10" id="tlA-yB-Uv5"/>
+                                            <constraint firstAttribute="bottom" secondItem="whh-jj-eEc" secondAttribute="bottom" id="v8M-Ou-Dth"/>
                                             <constraint firstItem="j2c-W4-25e" firstAttribute="centerY" secondItem="hMp-x3-Eb1" secondAttribute="centerY" id="zrj-or-fui"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="HUEColorView" destination="whh-jj-eEc" id="vQE-Ar-ufV"/>
                                             <outlet property="currentSettingsTitleLablel" destination="JH0-zN-g6k" id="kUo-Wi-leX"/>
                                             <outlet property="saveButton" destination="j2c-W4-25e" id="eWi-yB-nmW"/>
                                         </connections>

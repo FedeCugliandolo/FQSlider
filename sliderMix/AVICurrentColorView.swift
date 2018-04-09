@@ -15,7 +15,10 @@ class AVICurrentColorView: UIView {
         layer.cornerRadius = 8
         NotificationCenter.default.addObserver(self, selector: #selector(getCurrentColor), name: NSNotification.Name("finalColorNotification"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(getCurrentColor), name: NSNotification.Name("selectedPresetColorNotification"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(getCCTColor), name: NSNotification.Name("CCTColorNotification"), object: nil)
     }
+    
+    @IBOutlet weak var HUEColorView: UIView!
     
     @IBOutlet weak var currentSettingsTitleLablel: UILabel! {
         didSet {
@@ -41,6 +44,10 @@ class AVICurrentColorView: UIView {
     var currentColor = UIColor()
     
     @objc func getCurrentColor (notification: Notification) {
-        backgroundColor = notification.userInfo?["finalColor"] as? UIColor
+        HUEColorView.backgroundColor = notification.userInfo?["finalColor"] as? UIColor
+    }
+    
+    @objc func getCCTColor(notification: Notification) {
+        backgroundColor = UIColor.getCCTColorFrom(value: notification.userInfo?["CCTValue"] as! Float)
     }
 }

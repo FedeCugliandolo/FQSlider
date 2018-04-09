@@ -9,10 +9,13 @@
 import Foundation
 import UIKit
 
+private let cctColor1 = #colorLiteral(red: 1, green: 0.8470588235, blue: 0.537254902, alpha: 1)
+private let cctColor2 = #colorLiteral(red: 1, green: 0.9843137255, blue: 0.7921568627, alpha: 1)
+private let cctColor3 = #colorLiteral(red: 0.7137254902, green: 0.8980392157, blue: 1, alpha: 1)
+private let cctMaxValue:Float = 6500
+private let cctMinValue:Float = 2700
+
 class AVICCTSliderView: AVISliderView {
-    private let cctColor1 = #colorLiteral(red: 1, green: 0.8470588235, blue: 0.537254902, alpha: 1)
-    private let cctColor2 = #colorLiteral(red: 1, green: 0.9843137255, blue: 0.7921568627, alpha: 1)
-    private let cctColor3 = #colorLiteral(red: 0.7137254902, green: 0.8980392157, blue: 1, alpha: 1)
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,19 +23,20 @@ class AVICCTSliderView: AVISliderView {
         slider.hasGradient = true
         thumbTitle = "CCT".localizedUppercase
         unit = "k"
-        slider.minimumValue = 2700
-        slider.maximumValue = 6500
+        slider.minimumValue = cctMinValue
+        slider.maximumValue = cctMaxValue
     }
 
     override func didSliderChange(_ value: Float) {
         super.didSliderChange(value)
-        NotificationCenter.default.post(name: NSNotification.Name("CCTColorNotification"), object: nil, userInfo: ["CCTColor" : getColorFromGradient(value: value)])
-        textFieldBackgroundColor = getColorFromGradient(value: value)
+        NotificationCenter.default.post(name: NSNotification.Name("CCTColorNotification"), object: nil, userInfo: ["CCTValue" :  value])
+        textFieldBackgroundColor = UIColor.getCCTColorFrom(value: value)
     }
-    
-    func getColorFromGradient(value: Float) -> UIColor {
-        let percent = (value - slider.minimumValue) * 100 / (slider.maximumValue - slider.minimumValue)
-        
+}
+
+extension UIColor {
+    @objc class func getCCTColorFrom(value: Float) -> UIColor {
+        let percent = (value - cctMinValue) * 100 / (cctMaxValue - cctMinValue)
         var red: CGFloat = 0
         var green: CGFloat = 0
         var blue: CGFloat = 0
