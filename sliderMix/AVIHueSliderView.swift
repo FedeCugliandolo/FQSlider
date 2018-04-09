@@ -31,12 +31,12 @@ class AVIHueSliderView: AVISliderView {
     
     @objc func getSelectedHUE(notification: Notification) {
         let HUEValue = notification.userInfo?["HUE"] as! CGFloat
-        setSliderValue(Float(HUEValue) * 360)
+        setSliderValue(Float(HUEValue) * slider.maximumValue)
     }
     
     override func didSliderChange(_ value: Float) {
         super.didSliderChange(value)
-        let hueValue = value / 360
+        let hueValue = value / slider.maximumValue
         NotificationCenter.default.post(name: NSNotification.Name("HUEColorNotification"), object: nil, userInfo: ["HueColor" : CGFloat(hueValue)])
         textFieldBackgroundColor = UIColor(hue: CGFloat(hueValue), saturation: 1, brightness: 1, alpha: 1)
     }

@@ -24,7 +24,7 @@ class AVISatSliderView: AVISliderView {
     
     @objc func getSelectedSAT(notification: Notification) {
         let SATValue = notification.userInfo?["SAT"] as! CGFloat
-        setSliderValue(Float(SATValue) * 100)
+        setSliderValue(Float(SATValue) * slider.maximumValue)
     }
     
     @objc func getHueForSat(notification: Notification) {
@@ -34,6 +34,6 @@ class AVISatSliderView: AVISliderView {
     
     override func didSliderChange(_ value: Float) {
         super.didSliderChange(value) // show textfield percentage
-        NotificationCenter.default.post(name: NSNotification.Name("SatColorNotification"), object: nil, userInfo: ["SatColor" : CGFloat(value/100)])
+        NotificationCenter.default.post(name: NSNotification.Name("SatColorNotification"), object: nil, userInfo: ["SatColor" : CGFloat(value/slider.maximumValue)])
     }
 }

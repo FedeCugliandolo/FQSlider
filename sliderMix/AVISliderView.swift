@@ -77,7 +77,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     }
     
     func didSliderChange(_ value: Float) {
-        valueTextField.text = String(Int(value)) + " " + unit
+        valueTextField.text = String(Int(value)) + unit
         shadowOnValueText ? valueTextField.addShadow() : ()
     }
     
@@ -110,7 +110,7 @@ class AVISliderView: UIView, UITextFieldDelegate {
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         guard !(textField.text?.isEmpty)! else { return false }
         setSliderValue((textField.text! as NSString).floatValue)
-        NotificationCenter.default.post(name: NSNotification.Name("sliderChangeNotification"), object: nil, userInfo: nil)
+        NotificationCenter.default.post(name: NSNotification.Name("sliderChangeNotification"), object: nil, userInfo: ["clearPresets": clearSelectedPresets])
         return true
     }
     

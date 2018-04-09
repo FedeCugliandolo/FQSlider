@@ -127,7 +127,14 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         NotificationCenter.default.addObserver(self, selector: #selector(sliderChangeNotification), name: NSNotification.Name("sliderChangeNotification"), object: nil)
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        presetsCollectionView.delegate?.collectionView!(presetsCollectionView, didSelectItemAt: IndexPath(item: 3, section: 0))
+        presetsCollectionView.setContentOffset(CGPoint(x: 45, y: 0), animated: true) // show the collection moved
+    }
+    
     @objc func sliderChangeNotification(notification: Notification) {
+        // unselect preset cell when slider changes (not for diming)
         guard notification.userInfo?["clearPresets"] as! Bool else { return }
         unselectAllPresets()
     }
@@ -139,7 +146,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     
     // Preset cell delegates
     func didTapDeleteButton(preset: Preset) {
-        let deleteAlert = UIAlertController(title: "Delete Preset?", message: preset.name, preferredStyle: UIAlertControllerStyle.alert)
+        let deleteAlert = UIAlertController(title: "Delete Preset?", message: preset.name.uppercased(), preferredStyle: UIAlertControllerStyle.alert)
         deleteAlert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil))
         deleteAlert.addAction(UIAlertAction(title: "Delete", style: UIAlertActionStyle.destructive, handler: { alertAction in
             if let index = self.totalPresets.index(where: { $0 === preset}) {
